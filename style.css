@@ -1,0 +1,75 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+body {
+    background-color: #b30018;
+}
+
+/* Nav */
+
+.navbar {
+    background: #b30018;
+    position:absolute;
+    width:100%;
+    z-index:10;
+    max-width:100%;
+}
+
+a {
+    color: white;
+}
+
+a:hover {
+    color: red;
+}
+
+.top-content .carousel-item {
+    height: 100vh;
+    min-height: 400px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Fullscreen carousel */
+/* Credits: https://azmind.com/bootstrap-carousel-full-screen/ */
+ 
+.top-content .carousel-item-1 {
+    background-image: url(https://cdn.akamai.steamstatic.com/steam/apps/565860/ss_f72e45cf8d0109a654a885daeeb28ca47d28f300.1920x1080.jpg?t=1590681180);
+}
+ 
+.top-content .carousel-item-2 {
+    background-image: url(https://cdn.akamai.steamstatic.com/steam/apps/886970/ss_ee35bb285f258b44f8a4d9cf0f9f5231d7825e52.1920x1080.jpg?t=1590681243);
+}
+ 
+.top-content .carousel-item-3 {
+    background-image: url(https://cdn.akamai.steamstatic.com/steam/apps/1409640/ss_4623b7f9897a1dd88f5f71a297ca6709ec5fba6b.1920x1080.jpg?t=1605209311);
+}
+
+/* @media (max-width: 575px) {
+ 
+    .top-content .carousel-item {
+        max-height: 400px;
+    }
+} */
+
+.card-img-top {
+    width: 100%;
+    height: 10vw;
+    object-fit: cover;
+}
+
+.jumbotron2 {
+    padding: 13em;
+}
+
+.footer2 {
+    padding-top: 5em;
+}
+
+.my-flex-card > div > div.card {
+    height: calc(100% - 15px);
+    margin-bottom: 15px;
+}
