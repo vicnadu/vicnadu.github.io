@@ -1,0 +1,9 @@
+@font-face { font-family: XXII; src: url('XXII.ttf'); }
+
+body {
+    background-color: black;
+  }
+
+.docs-sidebar {
+    font-family: XXII;
+}
