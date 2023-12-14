@@ -3,7 +3,7 @@
 
 body {
     background-color: black;
-    background-image: url("/img/eye.png");
+    background-image: url("img/eye.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
