@@ -1,0 +1,14 @@
+/* Custom font - Lecter Johnson by doubletwo.net */
+@font-face { font-family: XXII; src: url('XXII.ttf'); }
+
+body {
+    background-color: black;
+    background-image: url("/img/eye.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+  }
+
+.docs-sidebar {
+    font-family: XXII;
+}
