@@ -2,7 +2,6 @@
 @font-face { font-family: XXII; src: url('../"../vicnadu.github.io/XXII.ttf"'); }
 
 body {
-    background-color: black;
     background-image: url("img/eye.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
