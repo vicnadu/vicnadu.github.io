@@ -1,23 +1,24 @@
 ---
 const { sideBarActiveItemID } = Astro.props;
-const activeClass = "bg-base-300"; // For primary color replace with `active` class
+const activeClass = "border-b-2"; // For primary color replace with `active` class
 ---
 
-<ul class="menu grow shrink menu-md overflow-y-auto">
-    <li><a class="py-3 text-base" id="home" href="/">Home</a></li>
-    <li><a class="py-3 text-base" id="projects" href="/projects">Projects</a></li>
-    <li><a class="py-3 text-base" id="services" href="/services">Services</a></li>
-    <li><a class="py-3 text-base" id="store" href="/store">Store</a></li>
-    <li><a class="py-3 text-base" id="blog" href="/blog/">Blog</a></li>
-    <li><a class="py-3 text-base" id="cv" href="/cv">CV</a></li>
-    <li>
+<ul class="menu grow shrink menu-md overflow-y-auto font-specialelite">
+    <li><a class="py-3 text-base" id="home" href="/">h o m e</a></li>
+    <li><a class="py-3 text-base" id="projects" href="/projects">p r o j e c t s</a></li>
+    <!-- <li><a class="py-3 text-base" id="blog" href="/blog/">writing</a></li> -->
+    <li><a class="py-3 text-base" id="cv" href="/cv">r e s u m e</a></li>
+    <li><a class="py-3 text-base" id="about" href="/about">a b o u t</a></li>
+    <!-- <li><a class="py-3 text-base" id="services" href="/services">Services</a></li> -->
+    <!-- <li><a class="py-3 text-base" id="store" href="/store">Store</a></li> -->
+    <!-- <li>
         <a
             class="py-3 text-base"
-            href="mailto:contact.manuelernestog@gmail.com"
+            href="mailto:va2269@nyu.edu"
             target="_blank"
-            referrerpolicy="no-referrer-when-downgrade">Contact</a
+            referrerpolicy="no-referrer-when-downgrade">contact</a
         >
-    </li>
+    </li> -->
 </ul>
 
 <script define:vars={{ sideBarActiveItemID: sideBarActiveItemID, activeClass: activeClass }}>

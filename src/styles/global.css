@@ -1,3 +1,18 @@
+/* Special Elite */
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+
+/* EB Garamond */
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
+
+
+/* @font-face {
+    font-family: 'Baby Doll';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(/public/fonts/BabyDoll.ttf) format('ttf');
+  } */
+
 .time-line-container>div:last-child .education__time>.education__line {
     display: none;
 }
