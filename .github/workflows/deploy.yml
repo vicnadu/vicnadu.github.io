@@ -17,19 +17,6 @@ permissions:
   id-token: write
 
 jobs:
-  install:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: pnpm/action-setup@v4
-        with:
-          version: 9
-          run_install: |
-            - recursive: true
-              args: [--frozen-lockfile, --strict-peer-dependencies]
-            - args: [--global, gulp, prettier, typescript]
 
   build:
     runs-on: ubuntu-latest
@@ -53,3 +40,25 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  cache-and-install:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        with:
+          version: 9
+          run_install: false
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
