@@ -1,6 +1,8 @@
 name: Deploy to GitHub Pages
 
 on:
+  - push
+  - pull_request
   # Trigger the workflow every time you push to the `main` branch
   # Using a different branch name? Replace `main` with your branch’s name
   push:
@@ -15,15 +17,19 @@ permissions:
   id-token: write
 
 jobs:
-    install:
+  install:
     runs-on: ubuntu-latest
+
     steps:
-        - uses: actions/checkout@v3
-        - name: Setup pnpm
-        uses: pnpm/action-setup@v3 # docs https://pnpm.io/continuous-integration#github-actions
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
         with:
-            # version: 9  # Optional: specify a pnpm version
-        # Further steps for your build/test process
+          version: 9
+          run_install: |
+            - recursive: true
+              args: [--frozen-lockfile, --strict-peer-dependencies]
+            - args: [--global, gulp, prettier, typescript]
 
   build:
     runs-on: ubuntu-latest
