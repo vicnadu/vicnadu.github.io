@@ -1,56 +1,13 @@
 ---
-title: "Demo Post 1"
-description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-pubDate: "Sep 10 2022"
-heroImage: "/post_img.webp"
-tags: ["tokio"]
+title: "The Mind Fuck World of Borges"
+description: "An essay on Tlon, Uqbar, Orbis Tertius by Borges."
+pubDate: "Sep 11 2024"
+heroImage: "https://scontent-lga3-1.xx.fbcdn.net/v/t39.30808-6/311622604_3008437816121289_5251409167592505636_n.jpg?stp=dst-jpg_p526x296_tt6&_nc_cat=103&ccb=1-7&_nc_sid=833d8c&_nc_ohc=ql4LVfbJfUQQ7kNvgGV1ysu&_nc_zt=23&_nc_ht=scontent-lga3-1.xx&_nc_gid=AW2-1WjZY6-2oLHNlg9rvMg&oh=00_AYBdtXoCnievEIe30K5sYMr4FtPDXEikT-Krka3rbEXoEA&oe=675B0EA7"
+# badge: "Demo badge"
+tags: ["fiction"]
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-incididunt ut labore et dolore magna aliqua. Vitae ultricies leo integer
-malesuada nunc vel risus commodo viverra. Adipiscing enim eu turpis egestas
-pretium. Euismod elementum nisi quis eleifend quam adipiscing. In hac habitasse
-platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus et malesuada
-fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus
-vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea
-dictumst quisque sagittis. Integer quis auctor elit sed vulputate mi. Dictumst
-quisque sagittis purus sit amet.
+Reading the fictional work of Tlon, Uqbar, Orbis Tertius by Borges was an incredibly confusing yet fascinating experience. At first, I struggled to understand if the narration was supposed to be real with parts of fiction inside of it, or if everything was fabricated from the start. The way the author wrote his accounts, with self awareness and no apparent context, made the initial portion of the story quite authentic. However, what makes the story so believable is the countless amounts of personal and academic analysis from the author. The way that these fictional worlds are described is completely absurd, yet I could not help but feel like I was reading an actual academic book due to the elaborate concepts that are analyzed. For example, the author displays what appears to be a fictional language from Tlön, citing the phrase “hlor u fang axaxaxas mlo”, which obviously means “upward behind the onstreaming it mooned.” These explanations were helpful in comprehending the author’s chain of thought, as well as displaying that there was careful planning behind specific elements of the fictional world.
+<br/><br/>
+Regarding the consequences of creating fictional worlds, it became apparent to me that one such consequence would be the loss of reality. As you begin to engage with your imagination to create such worlds, it becomes difficult to come back to earth and separate the two. For instance, I remember when a few years ago I went through a period where I was starting to believe that I had the ability to “quick save” in real life. I would randomly catch myself being confused for a second or two as to why I could not go back in time to fix small mistakes in my daily life, as well as unconsciously controlling my dreams and nightmares as if I were in a video game. I was so immersed in separate realities that it began to affect my own, something that prompted me to question my mind. Even worse is when works of fiction pervasively tap into our world, for instance, the works of American author L. Ron Hubbard, who ended up founding the Church of Scientology after writing many spiritual books that looked like they came from an anime. In my understanding, this is precisely what the last portion of the text alludes to, which is the possibility that fiction can end up replacing the reality that we consider to be real.
 
-Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum
-quisque non tellus. Habitasse platea dictumst quisque sagittis purus sit amet.
-Tellus molestie nunc non blandit massa. Cursus vitae congue mauris rhoncus.
-Accumsan tortor posuere ac ut. Fringilla urna porttitor rhoncus dolor. Elit
-ullamcorper dignissim cras tincidunt lobortis. In cursus turpis massa tincidunt
-dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc.
-Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus
-arcu felis bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed
-tempus urna et pharetra pharetra massa massa ultricies mi.
-
-Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam
-sit amet nisl suscipit. Lacus viverra vitae congue eu consequat ac felis donec.
-Egestas integer eget aliquet nibh praesent tristique magna sit amet. Eget magna
-fermentum iaculis eu non diam. In vitae turpis massa sed elementum. Tristique et
-egestas quis ipsum suspendisse ultrices. Eget lorem dolor sed viverra ipsum. Vel
-turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat semper viverra
-nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus
-vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim
-praesent elementum facilisis. Ultrices tincidunt arcu non sodales neque. Tempus
-egestas sed sed risus pretium quam vulputate. Viverra suspendisse potenti nullam
-ac tortor vitae purus faucibus ornare. Fringilla urna porttitor rhoncus dolor
-purus non. Amet dictum sit amet justo donec enim.
-
-Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut
-consequat semper viverra. Tellus mauris a diam maecenas sed enim ut sem viverra.
-Venenatis urna cursus eget nunc scelerisque viverra mauris in. Arcu ac tortor
-dignissim convallis aenean et tortor at. Curabitur gravida arcu ac tortor
-dignissim convallis aenean et tortor. Egestas tellus rutrum tellus pellentesque
-eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim
-blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices
-tincidunt arcu. Id cursus metus aliquam eleifend mi.
-
-Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus
-imperdiet. Id porta nibh venenatis cras sed felis eget velit. Ipsum a arcu
-cursus vitae. Facilisis magna etiam tempor orci eu lobortis elementum. Tincidunt
-dui ut ornare lectus sit. Quisque non tellus orci ac. Blandit libero volutpat
-sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar proin gravida.
-Egestas integer eget aliquet nibh praesent tristique magna.
