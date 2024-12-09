@@ -4,15 +4,12 @@ import { Image } from "astro:assets";
 const tag_url = url.split("/").slice(0, -1).join("/") + "/tag";
 ---
 
-<div
-  class="rounded-lg bg-black hover:shadow-xl transition ease-in-out hover:scale-[102%] text-white"
->
+<div class="rounded-lg bg-black hover:shadow-xl transition ease-in-out hover:scale-[102%] text-white">
   <a href={url} target={target}>
     <div>
-    <div class="hero-content flex-col">
-      <div class="border-2 rounded">
-        {
-          img && (
+      <div class="hero-content flex-col">
+        <div class="border-2 rounded">
+          {img && (
             <Image
               src={img}
               width={750}
@@ -21,24 +18,21 @@ const tag_url = url.split("/").slice(0, -1).join("/") + "/tag";
               alt={title}
               class="max-w-full md:max-w-[25rem] rounded-lg"
             />
-          )
-        }
-      </div>
-      <div class="grow w-full text-center">
-        <h1 class="text-xl font-bold">
-          {title}
-          {badge && <div class="badge badge-secondary mx-2">{badge}</div>}
-        </h1>
-        <p class="py-1 text-1xl">{desc}</p>
-        <div class="card-actions justify-end">
-          {
-            tags &&
-              tags.map((tag) => (
-                <a href={`${tag_url}/${tag}`} class="badge badge-outline">
-                  {tag}
-                </a>
-              ))
-          }
+          )}
+        </div>
+        <div class="grow w-full text-center">
+          <h1 class="text-xl font-bold">
+            {title}
+            {badge && <div class="badge badge-secondary mx-2">{badge}</div>}
+          </h1>
+          <p class="py-1 text-1xl">{desc}</p>
+          <div class="card-actions justify-end">
+            {tags && tags.map((tag) => (
+              <a href={`${tag_url}/${tag}`} class="badge badge-outline">
+                {tag}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </div>

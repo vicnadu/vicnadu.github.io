@@ -1,0 +1,70 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import createSlug from "../../lib/createSlug";
+
+// Fetch all projects to generate static paths
+export async function getStaticPaths() {
+  const projectEntries = await getCollection("projects");
+
+  // Generate paths for each project
+  const paths = projectEntries.map((entry) => {
+    const slug = createSlug(entry.data.title, entry.slug); // Generate slug for each project
+    return {
+      params: { slug }, // Dynamic parameter for project slug
+    };
+  });
+
+  return paths; // Return the array of paths directly
+}
+
+// Fetch project data based on slug
+const { slug } = Astro.params;
+const projectEntries = await getCollection("projects");
+const project = projectEntries.find(entry => {
+  const projectSlug = createSlug(entry.data.title, entry.slug); // Generate slug for comparison
+  return projectSlug === slug; // Compare URL slug with generated slug
+});
+
+// Handle project not found
+if (!project) {
+  throw new Error(`Project not found for slug: ${slug}`);
+}
+
+// Destructure project data for rendering
+const { title, description, heroImage, tags, badge, url } = project.data;
+
+// Render the markdown content (this is where the text below the frontmatter will be rendered)
+const { Content } = await project.render();
+---
+
+<BaseLayout title={title} sideBarActiveItemID="projects">
+  <div class="mb-5 flex justify-center items-center font-specialelite">
+    <div class="text-3xl font-bold pt-12 pb-6">{title}</div>
+  </div>
+
+  <div class="prose text-white">
+    {heroImage && <img src={heroImage} alt={title} class="w-full mb-6" />}
+    <p>{description}</p>
+
+    {tags && tags.length > 0 && (
+      <div>
+        <strong>Tags:</strong>
+        {tags.map(tag => (
+          <span key={tag} class="badge badge-outline mx-1">{tag}</span>
+        ))}
+      </div>
+    )}
+
+    {badge && <div class="badge badge-secondary mt-2">{badge}</div>}
+
+    {url && (
+      <div class="mt-4">
+        <a href={url} target="_blank" class="btn btn-primary">Visit Project</a>
+      </div>
+    )}
+
+    {/* Render the content from the markdown file */}
+    <Content />
+  </div>
+</BaseLayout>
