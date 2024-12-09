@@ -1,6 +1,8 @@
 ---
 const { title, img, desc, url, badge, tags, target = "_blank" } = Astro.props;
 import { Image } from "astro:assets";
+
+// Adjusted tag URL to work dynamically based on the current URL structure
 const tag_url = url.split("/").slice(0, -1).join("/") + "/tag";
 ---
 
@@ -27,11 +29,15 @@ const tag_url = url.split("/").slice(0, -1).join("/") + "/tag";
           </h1>
           <p class="py-1 text-1xl">{desc}</p>
           <div class="card-actions justify-end">
-            {tags && tags.map((tag) => (
-              <a href={`${tag_url}/${tag}`} class="badge badge-outline">
-                {tag}
-              </a>
-            ))}
+            {tags && tags.length > 0 && (
+              <div class="tags-container">
+                {tags.map((tag) => (
+                  <a href={`${tag_url}/${tag}`} class="badge badge-outline" key={tag}>
+                    {tag}
+                  </a>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>

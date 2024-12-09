@@ -1,0 +1,69 @@
+---
+import { getCollection } from "astro:content";
+import HorizontalCard from "../../../../components/HorizontalCard.astro";
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import createSlug from "../../../../lib/createSlug";
+
+export async function getStaticPaths({ paginate }) {
+  const all_projects = await getCollection("projects");
+
+  // Extract all tags from projects
+  const all_tags = all_projects.flatMap((project) => project.data.tags || []);
+
+  // Create pagination for each tag
+  return all_tags.flatMap((tag) => {
+    const filtered_projects = all_projects.filter((project) =>
+      project.data.tags?.includes(tag)
+    );
+    return paginate(filtered_projects, {
+      params: { tag },
+      pageSize: 6, // Number of projects per page
+    });
+  });
+}
+
+const { page } = Astro.props;
+const params = Astro.params;
+---
+
+<BaseLayout title={`Projects - Tag: ${params.tag}`} sideBarActiveItemID="projects">
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold font-specialelite">{`Project - ${params.tag}`}</div>
+  </div>
+
+  {page.data.length === 0 ? (
+    <div class="bg-base-200 border-l-4 border-secondary w-full p-4 min-w-full">
+      <p class="font-bold">Sorry!</p>
+      <p>No projects with this tag at the moment. Check back soon!</p>
+    </div>
+  ) : (
+    <ul>
+      {page.data.map((project) => (
+        <li key={project.slug}>
+          <HorizontalCard
+            title={project.data.title}
+            img={project.data.heroImage}
+            desc={project.data.description}
+            url={`/projects/${createSlug(project.data.title, project.slug)}`}
+            target="_self"
+            badge={project.data.badge}
+            tags={project.data.tags}
+          />
+        </li>
+      ))}
+    </ul>
+  )}
+
+  <div class="flex justify-between">
+    {page.url.prev && (
+      <a href={page.url.prev} class="btn btn-ghost my-10 mx-5">
+        Previous
+      </a>
+    )}
+    {page.url.next && (
+      <a href={page.url.next} class="btn btn-ghost my-10 mx-5">
+        Next
+      </a>
+    )}
+  </div>
+</BaseLayout>
