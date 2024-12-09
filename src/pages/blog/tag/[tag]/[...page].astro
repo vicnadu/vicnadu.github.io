@@ -1,52 +1,48 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
-import HorizontalCard from "@components/HorizontalCard.astro";
 import { getCollection } from "astro:content";
+import HorizontalCard from "@components/HorizontalCard.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
 import createSlug from "../../../../lib/createSlug";
 
-// Define getStaticPaths to return all the tag paths and their corresponding page numbers
-export async function getStaticPaths({ paginate }) {
-  const all_posts = await getCollection("blog");
-  const all_tags = all_posts.flatMap((post) => post.data.tags || []);
-  
-  // Get unique tags for generating pages
-  const unique_tags = [...new Set(all_tags)];
+// Fetch all blog posts for pagination
+const allPosts = await getCollection("blog");
 
-  // Generate paths for each tag and corresponding pages
-  return unique_tags.flatMap((tag) => {
-    const filtered_posts = all_posts.filter((post) => post.data.tags?.includes(tag));
-    
-    return paginate(filtered_posts, {
-      params: { tag },
-      pageSize: 10, // Set the number of posts per page
-    }).map((page, index) => ({
-      params: { tag, page: String(index + 1) }, // Ensure the page number is in the URL
-    }));
-  });
+// Filter posts by tag
+const tag = Astro.params.tag;
+const filteredPosts = allPosts.filter(post => post.data.tags && post.data.tags.includes(tag));
+
+// Ensure pagination works: Split the posts into pages
+const pageSize = 10; // Number of posts per page
+const totalPages = Math.ceil(filteredPosts.length / pageSize);
+const currentPage = Number(Astro.params.page) || 1;
+const pageData = filteredPosts.slice((currentPage - 1) * pageSize, currentPage * pageSize);
+
+// Ensure that pageData is available before rendering
+if (!pageData) {
+  throw new Error(`No posts found for the tag "${tag}" on page ${currentPage}`);
 }
 
-const { page } = Astro.props; // Get the paginated page data
-const params = Astro.params; // Get tag and page from the URL params
 ---
 
-<BaseLayout title={"Blog - " + params.tag} sideBarActiveItemID="blog">
+<BaseLayout title={`Blog - ${tag}`} sideBarActiveItemID="blog">
   <div class="mb-5 flex justify-center items-center font-specialelite">
-    <div class="text-3xl font-bold pt-12 pb-6">Writings - {params.tag}</div>
+    <div class="text-3xl font-bold pt-12 pb-6">Writings - {tag}</div>
   </div>
-  
-  {page.data.length === 0 ? (
+
+  {pageData.length === 0 ? (
     <div class="bg-base-200 border-l-4 border-secondary w-full p-4 min-w-full">
       <p class="font-bold">Sorry!</p>
       <p>There are no blog posts to show at the moment. Check back later!</p>
     </div>
   ) : (
     <ul>
-      {page.data.map((post) => (
+      {pageData.map(post => (
         <HorizontalCard
+          key={post.slug}
           title={post.data.title}
           img={post.data.heroImage}
           desc={post.data.description}
-          url={"/blog/" + createSlug(post.data.title, post.slug)}
+          url={`/blog/${createSlug(post.data.title, post.slug)}`}
           target="_self"
           badge={post.data.badge}
           tags={post.data.tags}
@@ -56,34 +52,16 @@ const params = Astro.params; // Get tag and page from the URL params
   )}
 
   <div class="flex justify-between">
-    {page.url.prev ? (
-      <a href={page.url.prev} class="btn btn-ghost my-10 mx-5">
-        <svg
-          class="h-6 w-6 fill-current md:h-8 md:w-8"
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-        >
-          <path d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z" />
-        </svg>
-        Recent posts
+    {currentPage > 1 ? (
+      <a href={`/blog/tag/${tag}/${currentPage - 1}`} class="btn btn-ghost my-10 mx-5">
+        Previous
       </a>
     ) : (
       <div />
     )}
-    {page.url.next ? (
-      <a href={page.url.next} class="btn btn-ghost my-10 mx-5">
+    {currentPage < totalPages ? (
+      <a href={`/blog/tag/${tag}/${currentPage + 1}`} class="btn btn-ghost my-10 mx-5">
         Older Posts
-        <svg
-          class="h-6 w-6 fill-current md:h-8 md:w-8"
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-        >
-          <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
-        </svg>
       </a>
     ) : (
       <div />
