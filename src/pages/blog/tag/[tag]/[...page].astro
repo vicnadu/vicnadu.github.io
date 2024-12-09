@@ -21,33 +21,28 @@ interface PageData {
 
 // Fetch all blog posts and handle pagination
 export async function getStaticPaths({ paginate }) {
-  const allPosts = await getCollection("blog");  // Fetch all blog posts
-
-  // Extract all unique tags from the posts
+  const allPosts = await getCollection("blog");
   const allTags = allPosts.flatMap(post => post.data.tags || []);
-  const uniqueTags = [...new Set(allTags)]; // Get unique tags
+  const uniqueTags = [...new Set(allTags)];
 
   // Generate paths for each tag and its pages
-  return uniqueTags.flatMap((tag) => {
-    const filteredPosts = allPosts.filter((post) => post.data.tags?.includes(tag));
+  return uniqueTags.flatMap(tag => {
+    const filteredPosts = allPosts.filter(post => post.data.tags?.includes(tag));
 
     return paginate(filteredPosts, {
       params: { tag },
-      pageSize: 10, // Number of posts per page
+      pageSize: 10,
     }).map((page, index) => ({
-      params: { tag, page: String(index + 1) }, // Generate paths for tag and page
+      params: { tag, page: String(index + 1) },
     }));
   });
 }
 
 // Fetch the page data based on tag and page parameters
-const { page, tag }: { page: PageData; tag: string } = Astro.props; // Explicitly define types
+const { page, tag }: PageData = Astro.props; // Explicitly define the type of `page`
 const params = Astro.params;
 
-// Ensure `tag` is defined and check `page` data
-if (!tag) {
-  throw new Error(`No tag specified. Could not find posts for tag "undefined"`);
-}
+// Check if page data exists and safely access it
 if (!page) {
   throw new Error(`No posts found for the tag "${tag}"`);
 }
