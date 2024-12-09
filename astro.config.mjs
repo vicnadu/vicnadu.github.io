@@ -1,10 +1,9 @@
 import { defineConfig } from 'astro/config';
-import mdx from '@astrojs/mdx';
-import sitemap from '@astrojs/sitemap';
-import tailwind from "@astrojs/tailwind";
 
-// https://astro.build/config
 export default defineConfig({
   site: 'https://vicnadu.github.io',
-  integrations: [mdx(), sitemap(), tailwind()]
+  build: {
+    target: 'static', // Ensure the build is for static sites
+  },
+  base: '/vicnadu.github.io/',
 });
