@@ -9,7 +9,7 @@ const all_projects = await getCollection("projects");
 
 // Sort projects by pubDate in descending order (newest first)
 const sortedProjects = all_projects.sort((a, b) => {
-  return new Date(b.data.pubDate) - new Date(a.data.pubDate); // Sort by pubDate, descending
+  return new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime(); // Convert to timestamps
 });
 
 const pageSize = 6; // Number of projects per page
