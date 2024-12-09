@@ -2,65 +2,90 @@
 import { getCollection } from "astro:content";
 import HorizontalCard from "@components/HorizontalCard.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
-import createSlug from "../../../../lib/createSlug";
+import createSlug from "../../lib/createSlug";
 
-// Fetch all blog posts for pagination
-const allPosts = await getCollection("blog");
+// Define the types for the expected page data structure
+interface Post {
+  title: string;
+  description: string;
+  heroImage: string;
+  badge: string;
+  tags: string[];
+  slug: string;
+}
 
-// Filter posts by tag
-const tag = Astro.params.tag;
-const filteredPosts = allPosts.filter(post => post.data.tags && post.data.tags.includes(tag));
+interface PageData {
+  data: Post[]; // Array of blog posts
+  url: { prev: string | null; next: string | null }; // Pagination URLs
+}
 
-// Ensure pagination works: Split the posts into pages
-const pageSize = 10; // Number of posts per page
-const totalPages = Math.ceil(filteredPosts.length / pageSize);
-const currentPage = Number(Astro.params.page) || 1;
-const pageData = filteredPosts.slice((currentPage - 1) * pageSize, currentPage * pageSize);
+// Fetch all blog posts and handle pagination
+export async function getStaticPaths({ paginate }) {
+  const allPosts = await getCollection("blog");
+  const allTags = allPosts.flatMap(post => post.data.tags || []);
+  const uniqueTags = [...new Set(allTags)];
 
-// Ensure that pageData is available before rendering
-if (!pageData) {
-  throw new Error(`No posts found for the tag "${tag}" on page ${currentPage}`);
+  // Generate paths for each tag and its pages
+  return uniqueTags.flatMap(tag => {
+    const filteredPosts = allPosts.filter(post => post.data.tags?.includes(tag));
+
+    return paginate(filteredPosts, {
+      params: { tag },
+      pageSize: 10,
+    }).map((page, index) => ({
+      params: { tag, page: String(index + 1) },
+    }));
+  });
+}
+
+// Fetch the page data based on tag and page parameters
+const { page, tag }: PageData = Astro.props; // Explicitly define the type of `page`
+const params = Astro.params;
+
+// Check if page data exists and safely access it
+if (!page) {
+  throw new Error(`No posts found for the tag "${tag}"`);
 }
 
 ---
 
-<BaseLayout title={`Blog - ${tag}`} sideBarActiveItemID="blog">
+<BaseLayout title={`Blog - ${params.tag}`} sideBarActiveItemID="blog">
   <div class="mb-5 flex justify-center items-center font-specialelite">
-    <div class="text-3xl font-bold pt-12 pb-6">Writings - {tag}</div>
+    <div class="text-3xl font-bold pt-12 pb-6">Writings - {params.tag}</div>
   </div>
 
-  {pageData.length === 0 ? (
+  {page.data.length === 0 ? (
     <div class="bg-base-200 border-l-4 border-secondary w-full p-4 min-w-full">
       <p class="font-bold">Sorry!</p>
       <p>There are no blog posts to show at the moment. Check back later!</p>
     </div>
   ) : (
     <ul>
-      {pageData.map(post => (
+      {page.data.map((post) => (
         <HorizontalCard
           key={post.slug}
-          title={post.data.title}
-          img={post.data.heroImage}
-          desc={post.data.description}
-          url={`/blog/${createSlug(post.data.title, post.slug)}`}
+          title={post.title}
+          img={post.heroImage}
+          desc={post.description}
+          url={`/blog/${createSlug(post.title, post.slug)}`}
           target="_self"
-          badge={post.data.badge}
-          tags={post.data.tags}
+          badge={post.badge}
+          tags={post.tags}
         />
       ))}
     </ul>
   )}
 
   <div class="flex justify-between">
-    {currentPage > 1 ? (
-      <a href={`/blog/tag/${tag}/${currentPage - 1}`} class="btn btn-ghost my-10 mx-5">
+    {page.url.prev ? (
+      <a href={page.url.prev} class="btn btn-ghost my-10 mx-5">
         Previous
       </a>
     ) : (
       <div />
     )}
-    {currentPage < totalPages ? (
-      <a href={`/blog/tag/${tag}/${currentPage + 1}`} class="btn btn-ghost my-10 mx-5">
+    {page.url.next ? (
+      <a href={page.url.next} class="btn btn-ghost my-10 mx-5">
         Older Posts
       </a>
     ) : (
