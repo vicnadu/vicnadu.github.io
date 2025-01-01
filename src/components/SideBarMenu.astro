@@ -4,21 +4,20 @@ const activeClass = "border-b-2"; // For primary color replace with `active` cla
 ---
 
 <ul class="menu grow shrink menu-md overflow-y-auto font-specialelite">
-    <li><a class="py-3 text-base" id="home" href="/">h o m e</a></li>
-    <li><a class="py-3 text-base" id="projects" href="/projects">p r o j e c t s</a></li>
-    <li><a class="py-3 text-base" id="blog" href="/blog/">w r i t i n g s</a></li>
-    <li><a class="py-3 text-base" id="cv" href="/cv">r e s u m e</a></li>
-    <li><a class="py-3 text-base" id="about" href="/about">a b o u t</a></li>
-    <!-- <li><a class="py-3 text-base" id="services" href="/services">Services</a></li> -->
-    <!-- <li><a class="py-3 text-base" id="store" href="/store">Store</a></li> -->
-    <!-- <li>
-        <a
-            class="py-3 text-base"
-            href="mailto:va2269@nyu.edu"
-            target="_blank"
-            referrerpolicy="no-referrer-when-downgrade">contact</a
-        >
-    </li> -->
+  <li><a class="py-3 text-base" id="home" href="/">h o m e</a></li>
+  <li class="relative group inline-block">
+    <a class="py-3 text-base" id="projects" href="/projects">p r o j e c t s</a>
+    <ul class="absolute hidden bg-gray-100 min-w-[160px] shadow-lg z-10 group-hover:block">
+        <li><a class="block px-4 py-2 text-black hover:bg-gray-200" href="/projects/web-development">w e b d e v e l o p m e n t</a></li>
+      <li><a class="block px-4 py-2 text-black hover:bg-gray-200" href="/projects/graphic-design">g r a p h i c d e s i g n</a></li>
+      <li><a class="block px-4 py-2 text-black hover:bg-gray-200" href="/projects/photography">p h o t o g r a p h y</a></li>
+      <li><a class="block px-4 py-2 text-black hover:bg-gray-200" href="/projects/3d-modeling">3 d m o d e l i n g</a></li>
+      <li><a class="block px-4 py-2 text-black hover:bg-gray-200" href="/projects/other">o t h e r</a></li>
+    </ul>
+  </li>
+  <li><a class="py-3 text-base" id="blog" href="/blog/">w r i t i n g s</a></li>
+  <li><a class="py-3 text-base" id="cv" href="/cv">r e s u m e</a></li>
+  <li><a class="py-3 text-base" id="about" href="/about">a b o u t</a></li>
 </ul>
 
 <script define:vars={{ sideBarActiveItemID: sideBarActiveItemID, activeClass: activeClass }}>

@@ -2,7 +2,7 @@
 title: "The Mind Fuck World of Borges"
 description: "An essay on Tlon, Uqbar, Orbis Tertius by Borges."
 pubDate: "2024-09-11"
-heroImage: "https://scontent.fssz3-1.fna.fbcdn.net/v/t39.30808-6/311622604_3008437816121289_5251409167592505636_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=833d8c&_nc_ohc=CoSQ4-AGMXoQ7kNvgEZ7E82&_nc_oc=Adi0roCW7mJQ4d_H7kpP0c6D6g9BRiWCmdh6Fu8DiD0-LKtOtBDFqe7FC91P54Li8lN53nTH9L0zQVgW-Oim_qsP&_nc_zt=23&_nc_ht=scontent.fssz3-1.fna&_nc_gid=AVWM_SjfaMgDNfWlPhTt_wx&oh=00_AYDexrZLxyv2fZY7CF0gp7H-509-bKENREPgkMrOWxDR7Q&oe=676ED527"
+heroImage: "https://i.pinimg.com/736x/21/b4/46/21b4467b92dc3ce55fae34e48c48500e.jpg"
 # badge: "Demo badge"
 tags: ["fiction"]
 ---

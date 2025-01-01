@@ -1,0 +1,32 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import HorizontalCard from "../../components/HorizontalCard.astro";
+import { getCollection } from "astro:content";
+import createSlug from "../../lib/createSlug";
+
+const all_projects = await getCollection("projects");
+const sortedProjects = all_projects.sort((a, b) => new Date(b.data.pubDate) - new Date(a.data.pubDate));
+const graphicDesignProjects = sortedProjects.filter(project => project.data.tags.includes("3d modeling"));
+---
+
+<BaseLayout title="Graphic Design Projects" sideBarActiveItemID="projects">
+  <div class="mb-5 flex justify-center items-center font-specialelite">
+    <div class="text-3xl font-bold pt-12 pb-6">3D Modeling</div>
+  </div>
+
+  <ul>
+    {graphicDesignProjects.map((project) => (
+      <li key={project.slug}>
+        <HorizontalCard
+          title={project.data.title}
+          img={project.data.heroImage}
+          desc={project.data.description}
+          url={`/projects/${createSlug(project.data.title, project.slug)}`}
+          target="_self"
+          badge={project.data.badge}
+          tags={project.data.tags}
+        />
+      </li>
+    ))}
+  </ul>
+</BaseLayout>
