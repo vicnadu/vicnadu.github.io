@@ -1,15 +1,14 @@
 ---
 const { sideBarActiveItemID } = Astro.props;
 const activeClass = "border-b-2"; // For primary color replace with `active` class
-let clickCount = 0;
 ---
 
 <ul class="menu grow shrink menu-md overflow-y-auto font-specialelite">
   <li><a class="py-3 text-base" id="home" href="/">h o m e</a></li>
-  <li class="relative inline-block">
-    <button class="py-3 text-base" id="projects" onclick="handleProjectsClick(event)">p r o j e c t s</button>
-    <ul id="dropdown-menu" class="absolute hidden bg-gray-100 min-w-[160px] shadow-lg z-10 md:group-hover:block">
-      <li><a class="block px-4 py-2 text-black hover:bg-gray-200" href="/projects/web-development">w e b d e v e l o p m e n t</a></li>
+  <li class="relative group inline-block">
+    <a class="py-3 text-base" id="projects" href="/projects">p r o j e c t s</a>
+    <ul class="absolute hidden bg-gray-100 min-w-[160px] shadow-lg z-10 group-hover:block">
+        <li><a class="block px-4 py-2 text-black hover:bg-gray-200" href="/projects/web-development">w e b d e v e l o p m e n t</a></li>
       <li><a class="block px-4 py-2 text-black hover:bg-gray-200" href="/projects/graphic-design">g r a p h i c d e s i g n</a></li>
       <li><a class="block px-4 py-2 text-black hover:bg-gray-200" href="/projects/photography">p h o t o g r a p h y</a></li>
       <li><a class="block px-4 py-2 text-black hover:bg-gray-200" href="/projects/3d-modeling">3 d m o d e l i n g</a></li>
@@ -21,24 +20,7 @@ let clickCount = 0;
   <li><a class="py-3 text-base" id="about" href="/about">a b o u t</a></li>
 </ul>
 
-<script>
-  function handleProjectsClick(event) {
-    const dropdownMenu = document.getElementById('dropdown-menu');
-    const isMobile = window.innerWidth < 768; // Tailwind's md breakpoint
-
-    if (isMobile) {
-      event.preventDefault();
-      clickCount++;
-      if (clickCount === 1) {
-        dropdownMenu.classList.toggle('hidden');
-      } else if (clickCount === 2) {
-        window.location.href = '/projects';
-      }
-    } else {
-      dropdownMenu.classList.remove('hidden');
-    }
-  }
-
-  const activeItemElem = document.getElementById(sideBarActiveItemID);
-  activeItemElem && activeItemElem.classList.add(activeClass);
+<script define:vars={{ sideBarActiveItemID: sideBarActiveItemID, activeClass: activeClass }}>
+const activeItemElem = document.getElementById(sideBarActiveItemID);
+activeItemElem && activeItemElem.classList.add(activeClass);
 </script>
